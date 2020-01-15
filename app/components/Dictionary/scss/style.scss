@@ -1,0 +1,26 @@
+#dictionary {
+  h2 {
+    display:inline-block;
+    width: 90%;
+  }
+  #delete-dictionary {
+    float:right;
+    clear:right;
+  }
+  #edit-dictionary {
+    font-size:14px;
+    position: relative;
+    top: -3px;
+  }
+  .editable-title {
+    input {
+      display: inline-block;
+      width: 80%;
+    }
+    a {
+      margin-left: 5px;
+      display: inline-block;
+      cursor: pointer;
+    }
+  }
+}
