@@ -1,0 +1,36 @@
+#add-domain {
+  margin: 20px 0 20px 0;
+  span {
+    margin-right: 5px;
+  }
+  input {
+    width: 33%;
+    display: inline-block;
+    margin-right: 2px;
+  }
+  button {
+    position:relative;
+    top: -3px;
+  }
+
+  @media (max-width: 768px) {
+    input {
+      width: 30%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    input {
+      width: 43%;
+    }
+  }
+
+  @media (max-width: 736px) {
+    span {
+      display:none !important;
+    }
+    input {
+      width: 40%;
+    }
+  }
+}

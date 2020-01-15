@@ -1,0 +1,9 @@
+body.is-open {
+  .slidenav {
+    display:block !important;
+    position:absolute;
+    right:0;
+    background: #fff;
+    z-index: 1;
+  }
+}
