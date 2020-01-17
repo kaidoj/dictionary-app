@@ -25,10 +25,10 @@ const DomainsTable = ({ domains, invalids, onDelete }) => (
           <td>{item.range}</td>
           {invalids ? <td><ReasonLabel item={item} /></td> : null}
           <td style={{ textAlign: 'right' }}>
-            <Button onClick={() => onDelete(item)} color="danger" size="sm" id="delete-domain-btn">
+            <Button onClick={() => onDelete(item)} color="danger" size="sm" id={`delete-domain-btn-${item.uuid}`}>
               <FontAwesomeIcon icon={faTrash} />
             </Button>
-            <UncontrolledTooltip placement="top" target="delete-domain-btn">
+            <UncontrolledTooltip placement="top" target={`delete-domain-btn-${item.uuid}`}>
               Delete domain
             </UncontrolledTooltip>
           </td>
