@@ -20,36 +20,41 @@ class EditableTitle extends Component {
     this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
+  componentWillReceiveProps(nextProps) {
+    const {
+      item
+    } = this.props;
+    if (nextProps.item !== item) {
+      this.setState({
+        value: nextProps.item.name
+      });
+    }
+  }
+
   handleEditClick(e) {
     e.preventDefault();
     const {
-      item,
-      update,
-      dictionaries
-    } = this.props;
-    const {
-      editing,
-      value
+      editing
     } = this.state;
 
     this.setState({
       editing: true
     });
     if (editing) {
-      const newItem = { ...item };
-      newItem.name = value;
-      if (existsByKey(dictionaries, newItem, 'name')) {
-        toastr.error('Error', 'Dictionary already exists with this name!');
-      } else {
-        update(newItem);
-        this.setState({
-          editing: false
-        });
-      }
+      this.updateItem();
     }
   }
 
   handleKeyPress(e) {
+    if (e.which !== 13) {
+      return false;
+    }
+
+    this.updateItem();
+    return true;
+  }
+
+  updateItem() {
     const {
       value
     } = this.state;
@@ -58,13 +63,11 @@ class EditableTitle extends Component {
       update,
       dictionaries
     } = this.props;
-    if (e.which !== 13) {
-      return false;
-    }
 
     const newItem = { ...item };
     newItem.name = value;
-    if (existsByKey(dictionaries, newItem, 'name')) {
+    const newDictionaries = dictionaries.filter((o) => o.uuid !== newItem.uuid);
+    if (existsByKey(newDictionaries, newItem, 'name')) {
       toastr.error('Error', 'Dictionary already exists with this name!');
     } else {
       update(newItem);
@@ -72,7 +75,6 @@ class EditableTitle extends Component {
         editing: false
       });
     }
-    return true;
   }
 
   handleOnChange(e) {
