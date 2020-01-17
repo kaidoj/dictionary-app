@@ -103,7 +103,7 @@ class Dictionary extends Component {
     return (
       <section id="dictionary">
         <header>
-          <EditableTitle item={item} update={update} />
+          <EditableTitle item={item} update={update} dictionaries={dictionaries} />
           <Button color="danger" size="sm" id="delete-dictionary" onClick={this.deleteDictionaryClick}>
             <FontAwesomeIcon icon={faTrash} />
           </Button>
