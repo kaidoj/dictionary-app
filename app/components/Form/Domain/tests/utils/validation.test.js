@@ -50,4 +50,12 @@ describe('validateDomain', () => {
     ];
     expect(validateDomain(dictionary, 'test223', 'test2')).toBe(REASON_CHAIN);
   });
+
+  it('should return chain reason for valids when range is there', () => {
+    const dictionary = new DictionaryModel('test');
+    dictionary.domains.valids = [
+      new DomainModel(dictionary.uuid, 'test', 'test2', '')
+    ];
+    expect(validateDomain(dictionary, 'test2', 'test233')).toBe(REASON_CHAIN);
+  });
 });

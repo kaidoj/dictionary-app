@@ -79,14 +79,9 @@ const checkCycle = (array, domain, range) => {
 
 const checkChain = (array, domain, range) => {
   const reason = array.some((item) => {
-    if (item.domain === range) {
+    if (item.domain === range || item.range === domain) {
       return true;
     }
-
-    if (reason) {
-      return REASON_CHAIN;
-    }
-
     return false;
   });
 
