@@ -7,7 +7,11 @@ describe('<Domains />', () => {
   let store;
   it('should render a div', () => {
     store = configureStore({});
-    const renderedComponent = shallow(<Domains store={store} />);
+    const renderedComponent = shallow(<Domains
+      store={store}
+      dictionaries={[]}
+      dictionary={{}}
+    />);
     expect(renderedComponent.length).toEqual(1);
   });
 });
